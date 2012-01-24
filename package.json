@@ -1,0 +1,36 @@
+{
+  "name": "dict",
+  "description": "A lightweight but safe dictionary, for when Object won't cut it",
+  "keywords": [
+    "dict",
+    "dictionary",
+    "map",
+    "string map",
+    "hash"
+  ],
+  "version": "1.0.0",
+  "author": "Domenic Denicola <domenic@domenicdenicola.com> (http://domenicdenicola.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DomenicDenicola/dict"
+  },
+  "bugs": {
+    "url": "http://github.com/DomenicDenicola/dict/issues"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./dict.js",
+  "scripts": {
+    "test": ".\\node_modules\\.bin\\mocha"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "~1.2.0",
+    "mocha": "~0.10.2",
+    "chai": "~0.1.6"
+  }
+}
