@@ -72,17 +72,19 @@ Featuring
 See Also
 --------
 
-* [rauschma/strmap][7] for something a bit more full-featured (albeit exposing its internals everywhere, if you care about that sort of thing).
-* [es-lab's StringMap.js][8] if you can deal with the lack of npm support.
-* [es6-shim][9]'s `Map` if you want more than just strings for your keys.
+* [rauschma/strmap][7] for something a bit more full-featured (albeit exposing its internals everywhere, if you care about that).
+* [dherman/dictjs][8] if you live in an ES6 world.
+* [es-lab's StringMap.js][9] if you can deal with the lack of npm support.
+* [es6-shim][10]'s `Map` if you want more than just strings for your keys.
 
 
-[1]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/prototype
-[2]: http://www.google.com/support/forum/p/Google+Docs/thread?tid=0cd4a00bd4aef9e4
-[3]: http://wiki.ecmascript.org/doku.php?id=harmony:simple_maps_and_sets
-[4]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/WeakMap
-[5]: http://visionmedia.github.com/mocha/
-[6]: http://chaijs.com/
-[7]: https://github.com/rauschma/strmap
-[8]: http://code.google.com/p/es-lab/source/browse/trunk/src/ses/StringMap.js
-[9]: https://github.com/paulmillr/es6-shim
+[1]:  https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/prototype
+[2]:  http://www.google.com/support/forum/p/Google+Docs/thread?tid=0cd4a00bd4aef9e4
+[3]:  http://wiki.ecmascript.org/doku.php?id=harmony:simple_maps_and_sets
+[4]:  https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/WeakMap
+[5]:  http://visionmedia.github.com/mocha/
+[6]:  http://chaijs.com/
+[7]:  https://github.com/rauschma/strmap
+[8]:  https://github.com/dherman/dictjs
+[9]:  http://code.google.com/p/es-lab/source/browse/trunk/src/ses/StringMap.js
+[10]: https://github.com/paulmillr/es6-shim
