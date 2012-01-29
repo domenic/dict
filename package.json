@@ -17,9 +17,6 @@
   "bugs": {
     "url": "http://github.com/DomenicDenicola/dict/issues"
   },
-  "directories": {
-    "lib": "./lib"
-  },
   "main": "./dict.js",
   "scripts": {
     "test": ".\\node_modules\\.bin\\mocha"
