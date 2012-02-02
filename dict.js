@@ -4,16 +4,6 @@ function mangle(key) {
 	return "~" + key;
 }
 
-function methods(obj, methodHash) {
-	for (var methodName in methodHash) {
-		Object.defineProperty(obj, methodName, {
-			value: methodHash[methodName],
-			configurable: true,
-			writable: true
-		});
-	}
-}
-
 function assertString(key) {
 	if (typeof key !== "string") {
 		throw new TypeError("key must be a string.");
@@ -23,8 +13,7 @@ function assertString(key) {
 module.exports = function () {
 	var store = Object.create(null);
 
-	var dict = {};
-	methods(dict, {
+	return {
 		get: function (key, defaultValue) {
 			assertString(key);
 			var mangled = mangle(key);
@@ -42,7 +31,5 @@ module.exports = function () {
 			assertString(key);
 			delete store[mangle(key)];
 		}
-	});
-
-	return dict;
+	};
 };
