@@ -20,15 +20,15 @@
   },
   "main": "./dict.js",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha"
+    "test": "mocha"
   },
   "engines": {
     "node": "*"
   },
   "dependencies": {},
   "devDependencies": {
-    "coffee-script": "~1.2.0",
-    "mocha": "~0.10.2",
-    "chai": "~0.1.6"
+    "coffee-script": "1",
+    "mocha": "1",
+    "chai": "1"
   }
 }
