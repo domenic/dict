@@ -8,7 +8,7 @@
     "string map",
     "hash"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Domenic Denicola <domenic@domenicdenicola.com> (http://domenicdenicola.com)",
   "license": "WTFPL",
   "repository": {
