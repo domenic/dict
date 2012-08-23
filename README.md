@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/domenic/dict.png)](http://travis-ci.org/domenic/dict)
 An easy but safe string-keyed store
 ===================================
 
