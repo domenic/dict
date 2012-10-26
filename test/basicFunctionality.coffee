@@ -30,7 +30,7 @@ describe "Dict under normal usage", ->
             d.set("key1", undefined)
             d.set("key2", 0)
             d.set("key3", false)
-        
+
         it "should still say it has those keys", ->
             d.has("key1").should.equal(true)
             d.has("key2").should.equal(true)
@@ -53,26 +53,30 @@ describe "Dict under normal usage", ->
 
         it "should no longer have that key", ->
             d.has("key").should.equal(false)
-        
+
         it "should return undefined for that key", ->
             expect(d.get("key")).to.equal(undefined)
 
 describe "Dict with constructor argument", ->
+    it "should not react to non-object arguments", ->
+        (-> dict(null)).should.not.throw()
+        (-> dict(true)).should.not.throw()
+
     it "should get an element from the constructor", ->
         obj = {}
-        d = dict { key: obj }
+        d = dict({ key: obj })
         d.has("key").should.equal(true)
         d.get("key").should.equal(obj)
 
     it "should get multiple elements from the constructor", ->
         obj = {}
-        d = dict { key: obj, key2: 42 }
+        d = dict({ key: obj, key2: 42 })
         d.has("key").should.equal(true)
         d.get("key").should.equal(obj)
         d.has("key2").should.equal(true)
         d.get("key2").should.equal(42)
 
     it "should not get elements from the constructor argument's prototype", ->
-        d = dict { }
+        d = dict({ })
         d.has("hasOwnProperty").should.equal(false)
         d.has("toString").should.equal(false)

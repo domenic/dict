@@ -20,7 +20,7 @@ function assertString(key) {
 	}
 }
 
-module.exports = function () {
+module.exports = function (initializer) {
 	var store = Object.create(null);
 
 	var dict = {};
@@ -44,13 +44,10 @@ module.exports = function () {
 		}
 	});
 
-	var init = arguments[0];
-	if (typeof init === "object") {
-		for (var key in init) {
-			if (Object.hasOwnProperty.call(init, key)) {
-				dict.set(key, init[key]);
-			}
-		}
+	if (typeof initializer === "object" && initializer !== null) {
+		Object.keys(initializer).forEach(function (key) {
+			dict.set(key, initializer[key]);
+		});
 	}
 
 	return dict;
