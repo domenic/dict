@@ -44,5 +44,14 @@ module.exports = function () {
 		}
 	});
 
+	var init = arguments[0];
+	if (typeof init === "object") {
+		for (var key in init) {
+			if (Object.hasOwnProperty.call(init, key)) {
+				dict.set(key, init[key]);
+			}
+		}
+	}
+
 	return dict;
 };
