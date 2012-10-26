@@ -56,3 +56,23 @@ describe "Dict under normal usage", ->
         
         it "should return undefined for that key", ->
             expect(d.get("key")).to.equal(undefined)
+
+describe "Dict with constructor argument", ->
+    it "should get an element from the constructor", ->
+        obj = {}
+        d = dict { key: obj }
+        d.has("key").should.equal(true)
+        d.get("key").should.equal(obj)
+
+    it "should get multiple elements from the constructor", ->
+        obj = {}
+        d = dict { key: obj, key2: 42 }
+        d.has("key").should.equal(true)
+        d.get("key").should.equal(obj)
+        d.has("key2").should.equal(true)
+        d.get("key2").should.equal(42)
+
+    it "should not get elements from the constructor argument's prototype", ->
+        d = dict { }
+        d.has("hasOwnProperty").should.equal(false)
+        d.has("toString").should.equal(false)
