@@ -22,8 +22,9 @@ function assertString(key) {
 
 module.exports = function (initializer) {
     var store = Object.create(null);
+    var size = 0;
 
-    var dict = { size: 0 };
+    var dict = {};
     methods(dict, {
         get: function (key, defaultValue) {
             assertString(key);
@@ -32,8 +33,12 @@ module.exports = function (initializer) {
         },
         set: function (key, value) {
             assertString(key);
+
             var mangled = mangle(key);
-            dict.size = mangled in store ? dict.size : dict.size + 1;
+            if (!(mangled in store)) {
+                ++size;
+            }
+
             store[mangled] = value;
         },
         has: function (key) {
@@ -42,11 +47,21 @@ module.exports = function (initializer) {
         },
         delete: function (key) {
             assertString(key);
+
             var mangled = mangle(key);
-            // lol dict size
-            dict.size = mangled in store ? dict.size - 1 : dict.size;
+            if (mangled in store) {
+                --size;
+            }
+
             delete store[mangle(key)];
         }
+    });
+
+    Object.defineProperty(dict, "size", {
+        get: function () {
+            return size;
+        },
+        configurable: true
     });
 
     if (typeof initializer === "object" && initializer !== null) {

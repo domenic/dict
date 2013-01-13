@@ -1,3 +1,5 @@
+"use strict"
+
 should = require("chai").should()
 expect = require("chai").expect
 
@@ -21,6 +23,10 @@ describe "Dict under unconventional, malicious, or dumb usage", ->
 
     it 'should not have a key named "__proto__" initially', ->
         d.has("__proto__").should.equal(false)
+
+    it 'should not allow changing of its `size` property', ->
+        expect(-> d.size = 10).to.throw(TypeError)
+        d.size.should.equal(0)
 
     describe 'when an object is inserted into the "__proto__" key', ->
         fakeValue = {}
