@@ -25,6 +25,21 @@ describe "Dict under normal usage", ->
         obj = {}
         d.get("key", obj).should.equal(obj)
 
+    it "should know how many keys are set", ->
+        d.size.should.equal(0)
+        d.set("k1", "v1")
+        d.size.should.equal(1)
+        d.set("k2", "v2")
+        d.size.should.equal(2)
+        d.set("k1", "v3")
+        d.size.should.equal(2)
+        d.delete("k1")
+        d.size.should.equal(1)
+        d.delete("bogus")
+        d.size.should.equal(1)
+        d.delete("k2")
+        d.size.should.equal(0)
+
     describe "when values are undefined or falsy", ->
         beforeEach ->
             d.set("key1", undefined)

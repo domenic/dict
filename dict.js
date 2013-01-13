@@ -23,7 +23,7 @@ function assertString(key) {
 module.exports = function (initializer) {
     var store = Object.create(null);
 
-    var dict = {};
+    var dict = { size: 0 };
     methods(dict, {
         get: function (key, defaultValue) {
             assertString(key);
@@ -32,7 +32,9 @@ module.exports = function (initializer) {
         },
         set: function (key, value) {
             assertString(key);
-            store[mangle(key)] = value;
+            var mangled = mangle(key);
+            dict.size = mangled in store ? dict.size : dict.size + 1;
+            store[mangled] = value;
         },
         has: function (key) {
             assertString(key);
@@ -40,6 +42,9 @@ module.exports = function (initializer) {
         },
         delete: function (key) {
             assertString(key);
+            var mangled = mangle(key);
+            // lol dict size
+            dict.size = mangled in store ? dict.size - 1 : dict.size;
             delete store[mangle(key)];
         }
     });
