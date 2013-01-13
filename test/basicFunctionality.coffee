@@ -1,3 +1,5 @@
+"use strict"
+
 should = require("chai").should()
 expect = require("chai").expect
 
