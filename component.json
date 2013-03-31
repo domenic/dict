@@ -1,0 +1,19 @@
+{
+  "name": "dict",
+  "repo": "nathan7/dict",
+  "description": "A lightweight but safe dictionary, for when Object won't cut it",
+  "version": "1.3.0",
+  "keywords": [
+    "dict",
+    "dictionary",
+    "map",
+    "string map",
+    "hash"
+  ],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "dict.js"
+  ]
+}
