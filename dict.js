@@ -1,7 +1,13 @@
 "use strict";
 
+var MANGLE_STRING = "~";
+
 function mangle(key) {
-    return "~" + key;
+    return MANGLE_STRING + key;
+}
+
+function unmangle(key) {
+    return key.substr(MANGLE_STRING.length);
 }
 
 function methods(obj, methodHash) {
@@ -54,6 +60,9 @@ module.exports = function (initializer) {
             }
 
             delete store[mangle(key)];
+        },
+        forEach: function (callback, thisArg) {
+            Object.keys(store).map(unmangle).forEach(callback.bind(thisArg));
         }
     });
 
