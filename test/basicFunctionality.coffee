@@ -42,6 +42,30 @@ describe "Dict under normal usage", ->
         d.delete("k2")
         d.size.should.equal(0)
 
+    it "should execute the callback function once for each element", ->
+      d.set("key1", "value1")
+      d.set("key2", "value2")
+      d.set("key3", "value3")
+      values = []
+      d.forEach (element) ->
+        values.push(d.get(element))
+      values[0].should.equal("value1")
+      values[1].should.equal("value2")
+      values[2].should.equal("value3")
+
+    it "should use the this value of thisArg when executing callback", ->
+      module =
+        x: 81
+        getX: ->
+          @x
+      d.set("key", "value")
+      d.forEach (->
+        should.not.exist(@)
+      )
+      d.forEach (->
+        @.should.equal(module)
+      ), module
+
     describe "when values are undefined or falsy", ->
         beforeEach ->
             d.set("key1", undefined)
