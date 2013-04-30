@@ -65,6 +65,9 @@ d.get("I", "Jar-Jar's Fun Time"); // "Jar-Jar's Fun Time"
 d.forEach(function (value, key) {
    console.log("Star Wars Episode " + key + ": " + value);
 });
+
+d.clear();
+d.size;                           // 0
 ```
 
 And of course, Dict prides itself in being bulletproof against all that nastiness we talked about earlier:
@@ -88,6 +91,7 @@ console.log(d.has("__proto__"));        // true
 * A lightweight [ES6-inspired][3] API:
   - `get`, `set`, `has` and `delete` basic operations.
   - A `size` property and `forEach` method for introspection.
+  - A `clear` method for clearing out all keys and values.
 * `get` accepts a second argument as a fallback for if the key isn't present (like [Mozilla's `WeakMap`][4]).
 * Doesn't let you get away with being dumb: if you pass a non-string as a key, you're going to get a `TypeError`.
 

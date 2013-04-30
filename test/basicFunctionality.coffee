@@ -50,6 +50,17 @@ describe "Dict under normal usage", ->
         d.delete("k").should.be.true
         d.delete("k").should.be.false
 
+    it "should allow clearing all keys", ->
+        d.set("k1", "v1")
+        d.set("k2", "v2")
+
+        d.clear()
+
+        expect(d.get("k1")).to.equal(undefined)
+        d.has("k1").should.be.false
+        expect(d.get("k2")).to.equal(undefined)
+        d.has("k2").should.be.false
+        d.size.should.equal(0)
 
     describe "forEach", ->
         it "should execute the callback function with args `(value, key, dict)`", ->

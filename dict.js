@@ -64,6 +64,10 @@ module.exports = function (initializer) {
 
             return false;
         },
+        clear: function () {
+            store = Object.create(null);
+            size = 0;
+        },
         forEach: function (callback, thisArg) {
             if (typeof callback !== "function") {
                 throw new TypeError("`callback` must be a function");
