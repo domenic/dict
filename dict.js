@@ -7,7 +7,7 @@ function mangle(key) {
 }
 
 function unmangle(key) {
-    return key.substr(MANGLE_STRING.length);
+    return key.substring(MANGLE_STRING.length);
 }
 
 function methods(obj, methodHash) {
