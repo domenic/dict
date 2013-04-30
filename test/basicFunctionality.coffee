@@ -44,6 +44,13 @@ describe "Dict under normal usage", ->
         d.delete("k2")
         d.size.should.equal(0)
 
+    it "should return `true` when deleting keys that are present; `false` otherwise", ->
+        d.delete("k").should.be.false
+        d.set("k", "v")
+        d.delete("k").should.be.true
+        d.delete("k").should.be.false
+
+
     describe "forEach", ->
         it "should execute the callback function with args `(value, key, dict)`", ->
           d.set("key1", "value1")

@@ -58,9 +58,11 @@ module.exports = function (initializer) {
             var mangled = mangle(key);
             if (mangled in store) {
                 --size;
+                delete store[mangled];
+                return true;
             }
 
-            delete store[mangle(key)];
+            return false;
         },
         forEach: function (callback, thisArg) {
             if (typeof callback !== "function") {
