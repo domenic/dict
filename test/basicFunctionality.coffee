@@ -1,7 +1,9 @@
 "use strict"
 
+require("chai").use(require("sinon-chai"))
 should = require("chai").should()
 expect = require("chai").expect
+sinon = require("sinon")
 
 dict = require("../dict")
 
@@ -42,29 +44,30 @@ describe "Dict under normal usage", ->
         d.delete("k2")
         d.size.should.equal(0)
 
-    it "should execute the callback function once for each element", ->
-      d.set("key1", "value1")
-      d.set("key2", "value2")
-      d.set("key3", "value3")
-      values = []
-      d.forEach (element) ->
-        values.push(d.get(element))
-      values[0].should.equal("value1")
-      values[1].should.equal("value2")
-      values[2].should.equal("value3")
+    describe "forEach", ->
+        it "should execute the callback function with args `(value, key, dict)`", ->
+          d.set("key1", "value1")
+          d.set("key2", "value2")
+          d.set("key3", "value3")
 
-    it "should use the this value of thisArg when executing callback", ->
-      module =
-        x: 81
-        getX: ->
-          @x
-      d.set("key", "value")
-      d.forEach (->
-        should.not.exist(@)
-      )
-      d.forEach (->
-        @.should.equal(module)
-      ), module
+          spy = sinon.spy()
+          d.forEach(spy)
+
+          spy.should.have.been.calledThrice
+          spy.getCall(0).should.have.been.calledWithExactly("value1", "key1", d)
+          spy.getCall(1).should.have.been.calledWithExactly("value2", "key2", d)
+          spy.getCall(2).should.have.been.calledWithExactly("value3", "key3", d)
+
+        it "should use the `thisArg` to set the `this` inside the callback", ->
+            thisArg = { "i am": "this!" }
+            d.set("key", "value")
+
+            spy = sinon.spy()
+            d.forEach(spy, thisArg)
+
+            spy.should.have.been.calledOnce
+            spy.getCall(0).should.have.been.calledWithExactly("value", "key", d)
+            spy.getCall(0).should.have.been.calledOn(thisArg)
 
     describe "when values are undefined or falsy", ->
         beforeEach ->

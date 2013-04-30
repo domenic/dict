@@ -27,6 +27,8 @@
     "chai": "~1.6",
     "coffee-script": "~1.6.2",
     "jshint": "~1.1",
-    "mocha": "~1.9.0"
+    "mocha": "~1.9.0",
+    "sinon": "~1.6",
+    "sinon-chai": "~2.4"
   }
 }

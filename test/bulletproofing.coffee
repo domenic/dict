@@ -1,5 +1,6 @@
 "use strict"
 
+require("chai").use(require("sinon-chai"))
 should = require("chai").should()
 expect = require("chai").expect
 
@@ -73,3 +74,25 @@ describe "Dict under unconventional, malicious, or dumb usage", ->
 
         it "should throw a `TypeError` when using an object with a toString method", ->
             shouldThrowFor({ toString: -> "key" })
+
+    describe 'when users pass non-functions to `forEach`', ->
+        shouldThrowFor = (value) ->
+            expect(-> d.forEach(value)).to.throw(TypeError)
+
+        it "should throw a `TypeError` when using `undefined`", ->
+            shouldThrowFor(undefined)
+
+        it "should throw a `TypeError` when using `null`", ->
+            shouldThrowFor(null)
+
+        it "should throw a `TypeError` when using `5`", ->
+            shouldThrowFor(5)
+
+        it "should throw a `TypeError` when using a date", ->
+            shouldThrowFor(new Date())
+
+        it "should throw a `TypeError` when using a regex", ->
+            shouldThrowFor(/key/i)
+
+        it "should throw a `TypeError` when using an object", ->
+            shouldThrowFor({})

@@ -1,5 +1,6 @@
 "use strict";
 
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 var MANGLE_STRING = "~";
 
 function mangle(key) {
@@ -62,7 +63,18 @@ module.exports = function (initializer) {
             delete store[mangle(key)];
         },
         forEach: function (callback, thisArg) {
-            Object.keys(store).map(unmangle).forEach(callback.bind(thisArg));
+            if (typeof callback !== "function") {
+                throw new TypeError("`callback` must be a function");
+            }
+
+            for (var mangledKey in store) {
+                if (hasOwnProperty.call(store, mangledKey)) {
+                    var key = unmangle(mangledKey);
+                    var value = store[mangledKey];
+
+                    callback.call(thisArg, value, key, dict);
+                }
+            }
         }
     });
 
