@@ -46,7 +46,7 @@ module.exports = function (initializer) {
                 ++size;
             }
 
-            store[mangled] = value;
+            return store[mangled] = value;
         },
         has: function (key) {
             assertString(key);
