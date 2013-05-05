@@ -50,6 +50,9 @@ describe "Dict under normal usage", ->
         d.delete("k").should.be.true
         d.delete("k").should.be.false
 
+    it "should return the value set", ->
+        d.set("k", "v").should.equal("v")
+
     it "should allow clearing all keys", ->
         d.set("k1", "v1")
         d.set("k2", "v2")
