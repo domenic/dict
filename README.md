@@ -56,7 +56,7 @@ d.get("V");                       // "The Empire Strikes Back"
 d.size;                           // 3
 
 d.has("I");                       // false
-d.set("I", "The Phantom Menace");
+d.set("I", "The Phantom Menace"); // "The Phantom Menace"
 d.get("I");                       // "The Phantom Menace"
 d.delete("I");                    // true
 d.get("I");                       // undefined
@@ -93,6 +93,7 @@ console.log(d.has("__proto__"));        // true
   - A `size` property and `forEach` method for introspection.
   - A `clear` method for clearing out all keys and values.
 * `get` accepts a second argument as a fallback for if the key isn't present (like [Mozilla's `WeakMap`][4]).
+* `set` returns the value set, just like assignment to an object would.
 * Doesn't let you get away with being dumb: if you pass a non-string as a key, you're going to get a `TypeError`.
 
 ## See Also
