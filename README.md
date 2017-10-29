@@ -111,7 +111,7 @@ console.log(d.has("__proto__"));        // true
 [2]:  http://www.google.com/support/forum/p/Google+Docs/thread?tid=0cd4a00bd4aef9e4
 [3]:  http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14.4
 [4]:  https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/WeakMap
-[5]:  http://visionmedia.github.com/mocha/
+[5]:  http://mochajs.org/
 [6]:  http://chaijs.com/
 [7]:  https://github.com/rauschma/strmap
 [8]:  https://github.com/dherman/dictjs
